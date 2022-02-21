@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">StarsBook</string>
+    <string name="user_name">שם משתמש</string>
+    <string name="password">סיסמה</string>
+    <string name="login">להתחברות לחצו כאן</string>
+    <string name="create_user">ליצירת משתמש</string>
+    <string name="user_name_or_password_less">שם המשתמש או הסיסמא חסרים</string>
+    <string name="secondly_password">סיסמה שנית</string>
+    <string name="gmail">כתובת מייל לחידוש סיסמה</string>
+    <string name="phoneNumber">מספר טלפון לחידוש סיסמה</string>
+    <string name="dataLess">חסרים נתונים</string>
+    <string name="no">לא</string>
+    <string name="yes">כן</string>
+    <string name="diferentPasswords">הסיסמאות אינן זהות</string>
+    <string name="exit">יציאה</string>
+    <string name="groups">קבוצות</string>
+    <string name="stars">כוכבים</string>
+    <string name="friends">חברים</string>
+    <string name="user_name_or_password_eror">שם המשתמש או הסיסמה שגויים</string>
+    <string name="news">עדכונים</string>
+    <string name="settings">הגדרות</string>
+</resources>
