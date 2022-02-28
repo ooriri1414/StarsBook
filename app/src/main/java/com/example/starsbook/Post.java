@@ -5,30 +5,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class Post {
+    private String titel;
     private String text;
-    private Bitmap image;
-    private int intImage;
-    public Post (String text, int image, String information, Context context){
+    public Post (String titel, String text){
+        this.titel = titel;
         this.text = text;
-        this.image = BitmapFactory.decodeResource(context.getResources(),image);
-        this.intImage = image;
     }
-    public Post (String name, Bitmap symbol, String information){
-        this.text = name;
-        this.image = symbol;
+
+    public String getTitel(){
+        return titel;
     }
-    public int getIntImage(){
-        return intImage;
-    }
-    public void setImage (Bitmap image){this.image = image;}
-    public void setImage (int image, Context context){
-        this.intImage = image;
-        this.image = BitmapFactory.decodeResource(context.getResources(),image);
-        this.intImage = image;
-    }
-    public Bitmap getImage(){
-        return image;
-    }
+    public void setTitel (String titel){this.titel = titel;}
+
     public void setText (String information){
         this.text = information;
     }

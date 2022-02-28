@@ -64,10 +64,10 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
         switch (view.getId()){
             case R.id.btExitNews:{
                 startActivity(MainActivity.class);
-            }break;
+            }break;/*
             case R.id.btGroupsNews:{
                 //TODO start the groups activity
-            }break;//TODO finish
+            }break;//TODO finish*/
         }
     }
     public void startActivity(Class clas){
