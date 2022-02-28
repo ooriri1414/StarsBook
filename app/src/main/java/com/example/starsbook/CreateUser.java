@@ -52,4 +52,9 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         return sharedPreferences;
     }//מתודה שיוצרת shared preferences ומחזירה אותו
 
+    public void startActivityWithUserExtra (Class nextActivity, User extra){
+        Intent intent = new Intent(this, nextActivity);
+        intent.putExtra(MainActivity.key, extra.getIdUser());
+        startActivity(intent);
+    }//מחלקה שמטרתה להפעיל מסך
 }

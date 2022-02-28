@@ -19,4 +19,5 @@
     <string name="user_name_or_password_eror">שם המשתמש או הסיסמה שגויים</string>
     <string name="news">עדכונים</string>
     <string name="settings">הגדרות</string>
+    <string name="internetChanged">שים לב לאינטרנט</string>
 </resources>

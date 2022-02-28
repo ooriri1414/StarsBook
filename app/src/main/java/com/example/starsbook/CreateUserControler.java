@@ -6,11 +6,11 @@ public class CreateUserControler {
     CreateUser view;//יוצר view
     CreateUserModel model;//יוצר model
 
-    String userName, password, secondlyPassword, gmail, phoneNumber;
+    private String userName, password, secondlyPassword, gmail, phoneNumber;
+    private int id;
     public CreateUserControler (CreateUser view){
         this.view = view;
         model = new CreateUserModel(this);
-        model.setToDataBase(makeUser(userName, password, gmail, phoneNumber, model.getNumOfUsers()));
     }//בנאי
 
     public void setUserName(String userName){
@@ -51,13 +51,14 @@ public class CreateUserControler {
 
     public String getPhoneNumber(){
         return phoneNumber;
-    }//עד כאן geters ו-seters
+    }//עד כאן geters ו-
 
     public void clickedCreateUser(String userName, String password, String secondlyPassword, String gmail, String phoneNumber){
         if (model.checkFilds(userName, password, secondlyPassword, gmail, phoneNumber)){//קורא ל-model שיבדוק אם כל השדות מלאים ואם כן שולח את המשתמש למסד הנתונים ומפעיל את מסך 3 ואם לא אז שולח למשתמש שחסרים נתונים
             if (password.equals(secondlyPassword)){//בודק אם הסיסמה והחזרה על הסיסמה זהות. אם כן אז גומר את הפעולות לעיל ואם לא אז שולח למשתמש שהסיסמאות לא זהות
-                model.setToDataBase(userName, password, gmail, phoneNumber, model.getNumOfUsers() + 1);//שולח את המשתמש למסד הנתונים
-                view.startActivity(News.class);//מפעיל את מסך 3
+                User user = makeUser(userName, password, gmail, phoneNumber, model.getNumOfUsers() + 1);
+                model.setToDataBase(user);//שולח את המשתמש למסד הנתונים
+                view.startActivityWithUserExtra(News.class, user);//מפעיל את מסך 3
             }
             else {
                 view.toToast(R.string.diferentPasswords);//שולח למשתמש שהסיסמאות לא זהות
@@ -78,4 +79,3 @@ public class CreateUserControler {
         return view.getSharedPref(sharedPreferences);
     }//מתודה שיוצרת shared preferences
 }
-//TODO broudcast reciver of internet disconected or flieng status

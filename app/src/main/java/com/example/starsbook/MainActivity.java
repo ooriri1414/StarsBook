@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btCreateUserMainActivity = findViewById(R.id.btCreateUserMainActivity);
         btCreateUserMainActivity.setOnClickListener(this);
         btLoginMainActivity.setOnClickListener(this);
-        for (int i = 0; i< 100000; i++){
-            toToast(R.string.app_name);
-        }
         //עד כאן שמירת ה-buttons וה-EditTexts ןשליחה של onClickListener.
     }
 
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }//מחלקה שמטרתה ליצור Toast
     public void startActivityWithUserExtra (Class nextActivity, User extra){
         Intent intent = new Intent(this, nextActivity);
-        intent.putExtra(key, extra.getUserNameUser());
+        intent.putExtra(key, extra.getIdUser());
         startActivity(intent);
     }//מחלקה שמטרתה להפעיל מסך
     public void startActivity(Class nextActivity){

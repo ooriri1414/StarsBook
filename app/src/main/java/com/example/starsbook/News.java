@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,17 +18,23 @@ import java.util.ArrayList;
 public class News extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private Button btExitNews, btGroupsNews, btStarsNews, btFriendsNews, btSettingsNews;
     private ListView lvFriendNews, lvGroupNews;
+    private TextView tvUserNameNews;
     private ArrayList<User> friends;
-    private ArrayList<Group> groups;
     private User user;
     private NewsControler controler;
-//Todo אולי אפשר לעשות ירושה בשביל לשתף את ה-user.
+    InternetLessReciver internetLessReciver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        controler = new NewsControler(this);
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra(MainActivity.key, 0);
+        user = controler.getUserFromId(userId);
+        tvUserNameNews = findViewById(R.id.tvUserNameNews);
+        tvUserNameNews.setText(user.getUserNameUser());
+
+        controler = new NewsControler(this, user);
 
         btExitNews = findViewById(R.id.btExitNews);
         btGroupsNews = findViewById(R.id.btGroupsNews);
@@ -41,28 +48,15 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
         btFriendsNews.setOnClickListener(this);
         btSettingsNews.setOnClickListener(this);
 
-        lvFriendNews = findViewById(R.id.lvFriendNews);
-        lvGroupNews = findViewById(R.id.lvGroupNews);
-
-        Intent intent = getIntent();
-        user = intent.getExtras().getParcelable(MainActivity.key);
+        lvFriendNews = findViewById(R.id.lvFriendsListNews);
 
         friends = new ArrayList<>();
-        groups = new ArrayList<>();
-
-        for (int i = 0; i < user.getFriends().length; i++){
-            friends.add(user.getFriends()[i]);
-        }
+        controler.makeFriendsList();
         ArrayAdapter friendsAdapter = new ArrayAdapter <User> (this, android.R.layout.simple_list_item_1, friends);
         lvFriendNews.setAdapter(friendsAdapter);
         lvFriendNews.setOnItemClickListener(this);
 
-        for (int i = 0; i < user.getGroups().length; i++){
-            groups.add(user.getGroups()[i]);
-        }
-        ArrayAdapter groupsAdapter = new ArrayAdapter<Group>(this, android.R.layout.simple_list_item_1);
-        lvGroupNews.setAdapter(groupsAdapter);
-        lvFriendNews.setOnItemClickListener(this);
+        internetLessReciver = new InternetLessReciver();
     }
 
     @Override
@@ -72,8 +66,8 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
                 startActivity(MainActivity.class);
             }break;
             case R.id.btGroupsNews:{
-                //TODOיתחיל
-            }
+                //TODO start the groups activity
+            }break;//TODO finish
         }
     }
     public void startActivity(Class clas){
@@ -86,18 +80,17 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (view.getId()){
-            case R.id.lvFriendNews:{
-                //TODO העברה למסך בו יוצגו הפוסטים של החבר הנ"ל.
-            }break;
-            case R.id.lvGroupNews:{
-                //TODO העברה למסך בו יוצגו הפוסטים של הקבוצה הנ"ל.
-            }
-        }
+        controler.clikedFriend(friends.get(i).getIdUser());
     }
-    public <T> void addToList(ArrayList <T> arrayList, T add){
 
+    public void addToList( User add){
+        friends.add(add);
+    }
+
+    public void startActivityWithExtra(Class nextActivity, int id){
+        Intent intent = new Intent(this, nextActivity);
+        intent.putExtra(MainActivity.key, id);
+        startActivity(intent);
     }
 }
-//TODO מזהה ייחודי לכל משתמש כך שכל משתמש ישמור את המזהה ולא את המשתמש של החבר וכנ"ל לגבי קבוצות.
-//TODO שמירת הפוסטים תתבצע כך: כל הפוסטים שמשתמש משתף ישמרו אצלו ובחלק חדשות ייראו כל החברים והקבוצות של אדם. בלחיצה על אחד מהם יחשפו מאת הפוסטים האחרונים ששותפו שם. כל אדם או קבוצה ששותף בה פוסט מאז הכניסה האחרונה של המשתמש (שתתועד בשיירד פרפרנסז) יובלט בדרך כלשהיא.
+//TODO to check the broadcast reciver.

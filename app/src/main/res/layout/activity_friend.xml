@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".News">
+    tools:context=".Friend">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:id="@+id/tvUserNameNews"
-            android:textSize="50dp"
+            android:id="@+id/tvUserNameFriend"
+            android:textSize="30dp"
             android:gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,36 +31,36 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/btExitNews"
+                android:id="@+id/btExitFriend"
                 android:text="@string/exit"
                 android:textSize="13.5dp"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/btGroupsNews"
+                android:id="@+id/btGroupsFriend"
                 android:text="@string/groups"
                 android:textSize="13.5dp"/>
-            
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/btStarsNews"
+                android:id="@+id/btStarsFriend"
                 android:text="@string/stars"
                 android:textSize="13.5dp"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/btFriendsNews"
+                android:id="@+id/btFriendsFriend"
                 android:text="@string/friends"
                 android:textSize="13.5dp"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/btSettingsNews"
+                android:id="@+id/btSettingsFriend"
                 android:text="@string/settings"
                 android:textSize="13.5dp"/>
         </LinearLayout>
@@ -68,7 +68,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="70"
-            android:id="@+id/lvFriendsListNews"/>
+            android:id="@+id/lvPostsFriend"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

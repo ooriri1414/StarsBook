@@ -70,9 +70,12 @@ public class CreateUserModel {
 
     public void setToDataBase(String userName, String password, String gmail, String phoneNumber, int id) {
         User user = controler.makeUser(userName, password, gmail, phoneNumber, id);//יוצר משתמש
-        userReference.push().setValue(user);//מכניס את המשתמש לבסיס הנתונים
+        userReference = database.getReference("user/" + id);
+        userReference.setValue(user);//מכניס את המשתמש לבסיס הנתונים
     }//מתודה ששולחת נתונים לבסיס הנתונים
     public void setToDataBase(User user) {
+        int id = user.getIdUser();
+        userReference = database.getReference("user/" + id);
         userReference.push().setValue(user);//מכניס את המשתמש לבסיס הנתונים
 //        userReference.push();
     }//מתודה ששולחת נתונים לבסיס הנתונים
@@ -81,4 +84,3 @@ public class CreateUserModel {
         sharedPreferences.contains(USER_NAME);
     }//מתודה ששולחת נתונים ל-shared preferences
 }
-//TODO קביעת IC עצמאית, יצירת שדה key במחלקה user,

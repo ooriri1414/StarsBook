@@ -1,10 +1,12 @@
 package com.example.starsbook;
 
+import java.util.ArrayList;
+
 public class User {
     private String userNameUser, passwordUser, gmailUser, phoneNumberUser;//שומר את נתוני המשתמש
-    private Post[] myPosts;
-    private User[] friends;
-    private Group[] groups;
+    private ArrayList<Post> posts;
+    private ArrayList<User> friends;
+    private ArrayList<Group> groups;
     private int id;
 
     public User(){
@@ -14,9 +16,6 @@ public class User {
         this.passwordUser = passwordUser;
         this.gmailUser = gmailUser;
         this.phoneNumberUser = phoneNumberUser;
-        myPosts = new Post[100];
-        friends = new User[1000];
-        groups = new Group[100];
         this.id = id;
     }//בנאי מלא
     public String getUserNameUser(){
@@ -43,22 +42,28 @@ public class User {
     public void setPhoneNumberUser(String phoneNumberUser){
         this.phoneNumberUser = phoneNumberUser;
     }
-    public User[] getFriends(){
+    public ArrayList<User> getFriendsUser(){
         return this.friends;
     }
-    public void setFriends(User[] friends){
+    public void setFriendsUser(ArrayList<User> friends){
         this.friends = friends;
     }
-    public Post[] getMyPosts(){
-        return this.myPosts;
+    public ArrayList<Post> getPostsUser(){
+        return this.posts;
     }
-    public void setMyPosts(Post[] myPosts){
-        this.myPosts = myPosts;
+    public void setPostsUser(ArrayList<Post> myPosts){
+        this.posts = myPosts;
     }
-    public Group[] getGroups(){
+    public ArrayList<Group> getGroupsUser(){
         return this.groups;
     }
-    public void setGroups(Group[] groups){
+    public void setGroupsUser(ArrayList<Group> groups){
         this.groups = groups;
+    }
+    public int getIdUser(){
+        return id;
+    }
+    public void setIdUser(int id){
+        this.id = id;
     }
 }
