@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class News extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
-    private Button btExitNews, btGroupsNews, btStarsNews, btFriendsNews, btSettingsNews;
+    private Button btExitNews, btGroupsNews, btStarsNews, btFriendsNews, btSettingsNews, btSharePostNews;
     private ListView lvFriendNews, lvGroupNews;
     private TextView tvUserNameNews;
     private ArrayList<User> friends;
@@ -41,12 +41,14 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
         btStarsNews = findViewById(R.id.btStarsNews);
         btFriendsNews = findViewById(R.id.btFriendsNews);
         btSettingsNews = findViewById(R.id.btSettingsNews);
+        btSharePostNews.findViewById(R.id.btSharePostNews);
 
         btExitNews.setOnClickListener(this);
         btGroupsNews.setOnClickListener(this);
         btStarsNews.setOnClickListener(this);
         btFriendsNews.setOnClickListener(this);
         btSettingsNews.setOnClickListener(this);
+        btSharePostNews.setOnClickListener(this);
 
         lvFriendNews = findViewById(R.id.lvFriendsListNews);
 
@@ -64,11 +66,14 @@ public class News extends AppCompatActivity implements View.OnClickListener, Ada
         switch (view.getId()){
             case R.id.btExitNews:{
                 startActivity(MainActivity.class);
-            }break;/*
+            }break;
             case R.id.btGroupsNews:{
                 //TODO start the groups activity
-            }break;//TODO finish*/
-        }
+            }break;
+            case R.id.btSharePostNews:{
+                startActivityWithExtra(SharePost.class, user.getIdUser());
+            }
+        }//TODO finish
     }
     public void startActivity(Class clas){
         Intent intent = new Intent(this, clas);

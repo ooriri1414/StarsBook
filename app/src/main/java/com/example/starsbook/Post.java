@@ -3,6 +3,7 @@ package com.example.starsbook;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.Editable;
 
 public class Post {
     private String titel;
@@ -10,6 +11,9 @@ public class Post {
     public Post (String titel, String text){
         this.titel = titel;
         this.text = text;
+    }
+
+    public Post(Editable text, Editable text1) {
     }
 
     public String getTitel(){

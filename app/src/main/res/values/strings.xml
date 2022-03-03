@@ -20,4 +20,10 @@
     <string name="news">עדכונים</string>
     <string name="settings">הגדרות</string>
     <string name="internetChanged">שים לב לאינטרנט</string>
+    <string name="back">חזור</string>
+    <string name="sharePost">שתף פוסט</string>
+    <string name="titel">כותרת:</string>
+    <string name="text">תוכן:</string>
+    <string name="share">שתף</string>
+    <string name="writeHere">הקלד כאן</string>
 </resources>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarsBook">
         <activity
+            android:name=".SharePost"
+            android:exported="true" />
+        <activity
             android:name=".Friend"
             android:exported="true" />
         <activity
