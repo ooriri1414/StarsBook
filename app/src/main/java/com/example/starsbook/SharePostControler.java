@@ -2,9 +2,12 @@ package com.example.starsbook;
 
 public class SharePostControler {
     SharePost view;
-    SharePostModel model;
     public SharePostControler(SharePost view){
         this.view = view;
-        model = new SharePostModel(this);
+    }
+
+    public void clickedShare(User user, String titel, String text) {
+        Post post = new Post(titel, titel);
+        user.getPostsUser().add(post);
     }
 }

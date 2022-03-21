@@ -12,12 +12,15 @@ import java.util.ArrayList;
 public class SharePost extends AppCompatActivity implements View.OnClickListener {
     EditText etTitelSharePost, etTextSharePost;
     Button btBackSharePost, btShareSharePost;
+    SharePostControler controler;
     User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_post);
+
+        controler = new SharePostControler(this);
 
         etTitelSharePost = findViewById(R.id.etTitelSharePost);
         etTextSharePost = findViewById(R.id.etTextSharePost);
@@ -30,12 +33,11 @@ public class SharePost extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btShareSharePost){
-            ArrayList<Post> posts = user.getPostsUser();
-            Post post = new Post(etTitelSharePost.getText().toString(), etTextSharePost.getText().toString());
-            posts.add(post);
-            user.setPostsUser(posts);
+        switch (view.getId()){
+            case R.id.btShareSharePost:{
+                controler.clickedShare(user,etTitelSharePost.getText().toString(), etTextSharePost.getText().toString());
+            }break;
         }
-        finish();
+       finish();
     }
 }

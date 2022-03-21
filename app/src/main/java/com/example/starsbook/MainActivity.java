@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, nextActivity);
         startActivity(intent);
     }
-
 }
 /* Mainactivity - מסך1
  * CreateUser - מסך2*/
